@@ -1,4 +1,4 @@
 | Syntax | Description |
 | ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| Header | Title | Text |
+| Paragraph | Text | more text |
