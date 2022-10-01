@@ -2,11 +2,11 @@ class Airport {
   // here's a starting point for you
   planesInAirport;
   capacity;
-  notLanded;
+  planesFlying;
 
   constructor(capacity = 1) {
     this.planesInAirport = [];
-    this.notLanded = [];
+    this.planesFlying = [];
     this.capacity = capacity;
   }
 
@@ -16,12 +16,16 @@ class Airport {
       plane.status = "landed"
     }
     else {
-      this.notLanded.push(plane);
+      this.planesFlying.push(plane);
       plane.status = "refused landing";
     }
   }
 
-
+  takeOff = plane => {
+    this.planesInAirport.pop();
+    this.planesFlying.push(plane);
+    plane.status = "taken off"
+  }
 }
 
 module.exports = Airport;

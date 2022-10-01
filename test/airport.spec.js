@@ -78,7 +78,7 @@ console.log(`Test 3 - will airport capacity be exceeded when attemting to land a
 // Arrange
 airport = new Airport();
 plane1 = { id: `plane1`, status: "is flying" };
-plane2 = { id: `plane2`, status: "is flying" }
+plane2 = { id: `plane2`, status: "is flying" };
 expected = 1;
 
 // Act
@@ -89,7 +89,38 @@ actual = airport.planesInAirport.length;
 
 // Assert
 result = assertEquals(actual, expected);
-console.log(`Test 3: ${airport.notLanded[airport.notLanded.length - 1].id} refused landing to full airport: ${result}`);
+console.log(`Test 3: ${airport.planesFlying[airport.planesFlying.length - 1].id} refused landing to full airport: ${result}`);
+
+
+// Clean up
+airport = null;
+plane = null;
+expected = undefined;
+actual = undefined;
+result = undefined;
+
+
+
+// Test 4 - can a plane take off from an airport? ------------------------------------------------------------------------------------------------
+
+console.log(`============================`);
+console.log(`Test 4 - can a plane take off from an airport?`);
+
+// Arrange
+airport = new Airport();
+plane1 = { id: `plane1`, status: "is flying" };
+plane2 = { id: `plane2`, status: "is flying" }
+expected = 0;
+
+// Act
+airport.land(plane1);
+airport.takeOff(plane1);
+actual = airport.planesInAirport.length;
+
+
+// Assert
+result = assertEquals(actual, expected);
+console.log(`Test 4: ${airport.planesFlying[airport.planesFlying.length - 1].id} took off from airport: ${result}`);
 
 
 // Clean up
