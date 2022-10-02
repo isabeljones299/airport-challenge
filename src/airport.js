@@ -4,10 +4,12 @@ class Airport {
   capacity;
   planesFlying;
 
+
   constructor(capacity = 1) {
     this.planesInAirport = [];
     this.planesFlying = [];
     this.capacity = capacity;
+    this.takenOff = [];
   }
 
   land = plane => {
@@ -22,9 +24,13 @@ class Airport {
   }
 
   takeOff = plane => {
-    this.planesInAirport.pop();
-    this.planesFlying.push(plane);
-    plane.status = "taken off"
+    for (let p = 0; p < this.planesInAirport.length; p++) {
+      if (this.planesInAirport[p].id == plane.id) {
+        this.planesFlying.push(plane);
+        plane.status = "taken off"
+        return this.planesInAirport.pop();
+      }
+    }
   }
 }
 

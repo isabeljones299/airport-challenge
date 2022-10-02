@@ -6,8 +6,7 @@ let actual;
 let result;
 let airport;
 let plane;
-let refused;
-let notLanded;
+let p;
 
 
 
@@ -101,7 +100,7 @@ result = undefined;
 
 
 
-// Test 4 - can a plane take off from an airport? ------------------------------------------------------------------------------------------------
+// Test 4 - can a plane take off from an airport?  ------------------------------------------------------------------------------------------------
 
 console.log(`============================`);
 console.log(`Test 4 - can a plane take off from an airport?`);
@@ -130,3 +129,34 @@ expected = undefined;
 actual = undefined;
 result = undefined;
 
+
+// Test 5 - Will a plane take off from an airport that it is not in? ------------------------------------------------------------------------------------------------
+
+console.log(`============================`);
+console.log(`Test 5 - can a plane take off from an airport that it is not currently in?`);
+
+// Arrange
+airport = new Airport();
+plane1 = { id: `plane1`, status: null };
+plane2 = { id: `plane2`, status: null }
+expected = null
+
+// Act
+airport.takeOff(plane1)
+actual = plane1.status
+
+
+// Assert
+result = assertEquals(actual, expected);
+console.log(`Test 5: plane can't take off from an airport that it is not currently in: ${result}`);
+//${airport.planesFlying[airport.planesFlying.length - 1].id}
+
+// Clean up
+airport = null;
+plane = null;
+expected = undefined;
+actual = undefined;
+result = undefined;
+
+
+// Test 6 - Will a plane land in an airport that it is already in? -------------------------------------------------------------------------------
