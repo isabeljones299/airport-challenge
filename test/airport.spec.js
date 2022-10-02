@@ -6,7 +6,6 @@ let actual;
 let result;
 let airport;
 let plane;
-let p;
 
 
 
@@ -180,6 +179,35 @@ actual = airport.planesInAirport.length
 // Assert
 result = assertEquals(actual, expected);
 console.log(`Test 6: A plane can't land in an airport that it is already in: ${result}`);
+
+// Clean up
+airport = null;
+plane = null;
+expected = undefined;
+actual = undefined;
+result = undefined;
+
+// Test 7 - Will a plane take off in stormy weather? -------------------------------------------------------------------------------
+
+console.log(`============================`);
+console.log(`Test 7 - Will a plane take off in stormy weather?`);
+
+// Arrange
+airport = new Airport();
+plane1 = { id: `plane1`, status: null };
+plane2 = { id: `plane2`, status: null };
+expected = 1
+
+// Act
+airport.land(plane1)
+airport.weather = 9
+airport.takeOff(plane1)
+actual = airport.planesInAirport.length
+
+
+// Assert
+result = assertEquals(actual, expected);
+console.log(`Test 7: A plane can't take off if the weather is stormy: ${result}`);
 
 // Clean up
 airport = null;
