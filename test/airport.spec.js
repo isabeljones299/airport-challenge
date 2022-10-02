@@ -148,8 +148,8 @@ actual = plane1.status
 
 // Assert
 result = assertEquals(actual, expected);
-console.log(`Test 5: plane can't take off from an airport that it is not currently in: ${result}`);
-//${airport.planesFlying[airport.planesFlying.length - 1].id}
+console.log(`Test 5: A plane can't take off from an airport that it is not currently in: ${result}`);
+
 
 // Clean up
 airport = null;
@@ -159,4 +159,31 @@ actual = undefined;
 result = undefined;
 
 
+
 // Test 6 - Will a plane land in an airport that it is already in? -------------------------------------------------------------------------------
+
+console.log(`============================`);
+console.log(`Test 6 - Can a plane land in an airport that it is already in?`);
+
+// Arrange
+airport = new Airport(2);
+plane1 = { id: `plane1`, status: null };
+plane2 = { id: `plane2`, status: null }
+expected = 1
+
+// Act
+airport.land(plane1)
+airport.land(plane1)
+actual = airport.planesInAirport.length
+
+
+// Assert
+result = assertEquals(actual, expected);
+console.log(`Test 6: A plane can't land in an airport that it is already in: ${result}`);
+
+// Clean up
+airport = null;
+plane = null;
+expected = undefined;
+actual = undefined;
+result = undefined;

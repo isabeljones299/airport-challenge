@@ -13,7 +13,8 @@ class Airport {
   }
 
   land = plane => {
-    if (this.planesInAirport.length < this.capacity) {
+    console.log(!(plane.status === "landed"))
+    if (this.planesInAirport.length < this.capacity && !(plane.status === "landed")) {
       this.planesInAirport.push(plane);
       plane.status = "landed"
     }
