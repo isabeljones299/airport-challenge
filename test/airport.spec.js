@@ -215,3 +215,32 @@ plane = null;
 expected = undefined;
 actual = undefined;
 result = undefined;
+
+
+
+// Test 8 - Will a plane land in stormy weather? -------------------------------------------------------------------------------
+
+console.log(`============================`);
+console.log(`Test 8 - Will a plane land in stormy weather?`);
+
+// Arrange
+airport = new Airport(undefined, 9);
+plane1 = { id: `plane1`, status: null };
+plane2 = { id: `plane2`, status: null };
+expected = 0
+
+// Act
+airport.land(plane1)
+actual = airport.planesInAirport.length
+
+
+// Assert
+result = assertEquals(actual, expected);
+console.log(`Test 8: A plane will not land if the weather is stormy: ${result}`);
+
+// Clean up
+airport = null;
+plane = null;
+expected = undefined;
+actual = undefined;
+result = undefined;

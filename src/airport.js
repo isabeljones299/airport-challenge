@@ -4,13 +4,14 @@ class Airport {
   capacity;
   planesFlying;
   weather;
+  takenOff;
 
   constructor(capacity = 1, weather = 5) {
     //constructor(capacity = 1, weather = Math.floor(Math.random() * 10)) {
     this.planesInAirport = [];
     this.planesFlying = [];
     this.capacity = capacity;
-    this.weather = weather
+    this.weather = weather;
     this.takenOff = [];
   };
 
