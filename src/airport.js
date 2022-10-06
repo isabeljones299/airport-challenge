@@ -1,18 +1,15 @@
 class Airport {
-  // here's a starting point for you
+
   planesInAirport;
   capacity;
   planesFlying;
   weather;
-  takenOff;
 
-  constructor(capacity = 1, weather = 5) {
-    //constructor(capacity = 1, weather = Math.floor(Math.random() * 10)) {
+  constructor(weather = Math.floor(Math.random() * 10), capacity = 2) {
     this.planesInAirport = [];
     this.planesFlying = [];
     this.capacity = capacity;
     this.weather = weather;
-    this.takenOff = [];
   };
 
   isCalm() {
@@ -20,28 +17,34 @@ class Airport {
       return true;
   };
 
+  isIn(plane) {
+    if (this.planesInAirport.some((x) => x == plane)) {
+      return true
+    }
+  }
 
   land = plane => {
-    if (this.planesInAirport.length < this.capacity && !(plane.status == "landed") && this.isCalm()) {
+    if (this.planesInAirport.length < this.capacity && !this.isIn(plane) && this.isCalm()) {
       this.planesInAirport.push(plane);
-      plane.status = "landed"
     }
-    if (this.planesInAirport.length >= this.capacity && !(plane.status == "landed") && this.isCalm()) {
+    if (this.planesInAirport.length >= this.capacity) {
       this.planesFlying.push(plane);
-      plane.status = "refused landing as airport full";
     }
-  };
+  }
 
   takeOff = plane => {
     for (let p = 0; p < this.planesInAirport.length; p++) {
       if (this.planesInAirport[p].id == plane.id && this.isCalm()) {
         this.planesFlying.push(plane);
-        plane.status = "taken off"
         this.planesInAirport.pop();
       }
     }
   };
 };
+
+planeCount = () => {
+  return this.planesInAirport.length
+}
 
 module.exports = Airport;
 

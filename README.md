@@ -85,12 +85,20 @@ My README
 
 Domain model: Airport Challenge Requirements
 
-|Object|Properties|Messages|Context|Output|notes|
-|:----|:----|:----|:----|:----|:----|
-|Plane |id @string|id()| |@string| |
-| |Status @string|location()|Taken off|@string “plane is flying”|Default status would be taken off?|
-| | | |landed|@string “plane is in airport”| |
-|Airport|planesInAirport @array[plane]|land(@plane)|Not full, plane not in airport|@array[plane], @string “plane landed in airport”| |
-| | |takeOff(@plane)|Plane in airport|@array[plane], @string “plane taken off from airport”| |
-| |Capacity @int|increaseCapacity(@int)|Is full|@string “{$@int} more landing spaces in airport”|need to set default capacity using constructor|
-| |Capacity @int| |Is full|@string “plane cannot land as this airport is full”| |
+| Object  | Properties                    | Messages               | Context                        | Output                                                |
+| :------ | :---------------------------- | :--------------------- | :----------------------------- | :---------------------------------------------------- |
+| Plane   | id @string                    | id()                   |                                | @string                                               |
+|         |                               |                        |                                |                                                       |
+| Airport | planesInAirport @array[plane] | land(@plane)           | Not full, plane not in airport | @array[plane], @string “plane landed in airport”      |
+|         |                               | takeOff(@plane)        | Plane in airport               | @array[plane], @string “plane taken off from airport” |
+|         | Capacity @int                 | increaseCapacity(@int) | Is full                        | @string “{$@int} more landing spaces in airport”      |
+|         |                               |                        | Is full                        | @string “plane cannot land as this airport is full”   |
+
+
+
+
+### improvements
+
+- refactor:
+    - add a plane class
+    - encapsulate code

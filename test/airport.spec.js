@@ -15,8 +15,8 @@ console.log(`============================`);
 console.log(`Test 1 - after landing, is the plane in the airport?`);
 
 // Arrange
-airport = new Airport();
-plane = { id: "plane1", status: "is flying" }
+airport = new Airport(5);
+plane = { id: "plane1" }
 expected = 1;
 
 // Act
@@ -43,9 +43,9 @@ console.log(`============================`);
 console.log(`Test 2 - will more planes be allowed to land by increasing airport capacity from default?`);
 
 // Arrange
-airport = new Airport(2);
-plane1 = { id: `plane1`, status: "is flying" };
-plane2 = { id: `plane2`, status: "is flying" }
+airport = new Airport(5, 2);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` }
 expected = 2;
 
 // Act
@@ -74,9 +74,9 @@ console.log(`============================`);
 console.log(`Test 3 - will airport capacity be exceeded when attemting to land a plane in a full airport?`);
 
 // Arrange
-airport = new Airport();
-plane1 = { id: `plane1`, status: "is flying" };
-plane2 = { id: `plane2`, status: "is flying" };
+airport = new Airport(5, 1);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` };
 expected = 1;
 
 // Act
@@ -87,7 +87,7 @@ actual = airport.planesInAirport.length;
 
 // Assert
 result = assertEquals(actual, expected);
-console.log(`Test 3: ${airport.planesFlying[airport.planesFlying.length - 1].id} refused landing to full airport: ${result}`);
+console.log(`Test 3: plane refused landing to full airport: ${result}`);
 
 
 // Clean up
@@ -105,9 +105,9 @@ console.log(`============================`);
 console.log(`Test 4 - can a plane take off from an airport?`);
 
 // Arrange
-airport = new Airport();
-plane1 = { id: `plane1`, status: "is flying" };
-plane2 = { id: `plane2`, status: "is flying" }
+airport = new Airport(5);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` }
 expected = 0;
 
 // Act
@@ -118,7 +118,7 @@ actual = airport.planesInAirport.length;
 
 // Assert
 result = assertEquals(actual, expected);
-console.log(`Test 4: ${airport.planesFlying[airport.planesFlying.length - 1].id} took off from airport: ${result}`);
+console.log(`Test 4: plane took off from airport: ${result}`);
 
 
 // Clean up
@@ -135,14 +135,16 @@ console.log(`============================`);
 console.log(`Test 5 - can a plane take off from an airport that it is not currently in?`);
 
 // Arrange
-airport = new Airport();
-plane1 = { id: `plane1`, status: null };
-plane2 = { id: `plane2`, status: null }
-expected = null
+airport = new Airport(5);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` }
+//expected = null
+expected = 0;
 
 // Act
 airport.takeOff(plane1)
-actual = plane1.status
+//actual = plane1.status // change planesFlying
+actual = airport.planesFlying.length
 
 
 // Assert
@@ -165,9 +167,9 @@ console.log(`============================`);
 console.log(`Test 6 - Can a plane land in an airport that it is already in?`);
 
 // Arrange
-airport = new Airport(2);
-plane1 = { id: `plane1`, status: null };
-plane2 = { id: `plane2`, status: null }
+airport = new Airport(5, 2);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` }
 expected = 1
 
 // Act
@@ -193,9 +195,9 @@ console.log(`============================`);
 console.log(`Test 7 - Will a plane take off in stormy weather?`);
 
 // Arrange
-airport = new Airport();
-plane1 = { id: `plane1`, status: null };
-plane2 = { id: `plane2`, status: null };
+airport = new Airport(5);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` };
 expected = 1
 
 // Act
@@ -224,9 +226,9 @@ console.log(`============================`);
 console.log(`Test 8 - Will a plane land in stormy weather?`);
 
 // Arrange
-airport = new Airport(undefined, 9);
-plane1 = { id: `plane1`, status: null };
-plane2 = { id: `plane2`, status: null };
+airport = new Airport(9);
+plane1 = { id: `plane1` };
+plane2 = { id: `plane2` };
 expected = 0
 
 // Act
