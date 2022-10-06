@@ -81,24 +81,46 @@ Your task is to test drive the creation of a set of classes/objects to satisfy a
 Your code should defend against [edge cases](http://programmers.stackexchange.com/questions/125587/what-are-the-difference-between-an-edge-case-a-corner-case-a-base-case-and-a-b) such as inconsistent states of the system ensuring that planes can only take off from airports they are in; planes that are already flying cannot take off and/or be in an airport; planes that are landed cannot land again and must be in an airport, etc.
 ___________________________________________________________________________________________________________________________________________
 
-My README
+# My README
 
-Domain model: Airport Challenge Requirements
+### How to install
 
-| Object  | Properties                    | Messages               | Context                        | Output                                                |
-| :------ | :---------------------------- | :--------------------- | :----------------------------- | :---------------------------------------------------- |
-| Plane   | id @string                    | id()                   |                                | @string                                               |
-|         |                               |                        |                                |                                                       |
-| Airport | planesInAirport @array[plane] | land(@plane)           | Not full, plane not in airport | @array[plane], @string “plane landed in airport”      |
-|         |                               | takeOff(@plane)        | Plane in airport               | @array[plane], @string “plane taken off from airport” |
-|         | Capacity @int                 | increaseCapacity(@int) | Is full                        | @string “{$@int} more landing spaces in airport”      |
-|         |                               |                        | Is full                        | @string “plane cannot land as this airport is full”   |
+1. clone the repo from github using the fork button
+2. Copy the url of the cloned repo - should be in the format https://github.com/myusername/repo-name.git
+3. create your local repo by opening a folder VS Code or IDE of choice, then type the following in terminal:
+    `git clone https://github.com/myusername/airport-challenge.git`
+
+### How to run tests
+1. install node.js
+2. to run tests navigate to the test folder, then: `node aiport.spec.js`
+---
+
+## My approach
+From the user requirements given above, I created a domain model to describe the problem. I used test driven development to create robust code that satisfies all the requirements including the extended criteria.
+
+From the domain model, I created an airport class with weather and capacity properties, an array property to contain the planes which are to land, and another array property to contain planes which have taken off from the airport. 
+The airport capacity can be set to any value when a new instance of airport is created, as can weather. If not set, the weather property will default to a random number between 1-10. To ensure the weather is more often calm than stormy, a number < 8 denotes calm weather. The capacity dictates the maximum length of the array constaining planes in the airport. This array can be searched to see if a plane is currently in an airport.
 
 
+### Domain model: Airport Challenge Requirements
 
+| Object  | Properties                    | Messages              | Context                        | Output                  |
+| :------ | :---------------------------- | :-------------------- | :----------------------------- | :---------------------- |
+| Plane   | id @string                    | getId()               |                                | @string                 |
+|         |                               |                       |                                |                         |
+| Airport | planesInAirport @array[plane] | land(@plane)          | When not full, isIn(@plane) == | @array[plane],          |
+|         |                               |                       | false and isCalm() == true.    |                         |
+|         |                               | isIn(@plane)          | Checks if plane is in airport. | @boolean                |
+|         |                               | takeOff(@plane)       | when isIn(@plane) == true      | @array[plane]           |
+|         |                               |                       | and isCalm() == true.          |                         |
+|         |                               |                       |                                |                         |
+|         | Capacity @int                 | if(x < this.capacity) | Lands plane                    | @boolean, @array[plane] |
+|         |                               |                       | Airport full no landing        | @boolean                |
+|         | Weather @int                  | isCalm(@weather)      | Stormy if random no. > 7       | @boolean                |
+---
 
-### improvements
+## Improvements
 
-- refactor:
-    - add a plane class
-    - encapsulate code
+If I was to refactor my code:
+    - I would add plane and weather classes ensuring single responsibility
+    - Implement object oriented programming encapsulate my code to make it reusable
