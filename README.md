@@ -83,6 +83,16 @@ ________________________________________________________________________________
 
 # My README
 
+This project was created as part of my training at Digital Futures Academy to aid my understanding of the programming language JavaScript, and to practice using testing frameworks and write passing tests to ensure the correct function of my code.
+
+My challenge was to create the software to cover the basic functionalities of an airport. Posed in the form of user requirements, the question asked for control of take off and landing of planes, ensuring planes could not land at an airport they were already in, plus an additional functionality to prevent planes from taking off or landing in stormy weather. 
+
+### Built with:
+- Javascript
+- VS Code
+- Node.js
+- Git
+
 ### How to install
 
 1. clone the repo from github using the fork button
@@ -120,6 +130,10 @@ The airport capacity can be set to any value when a new instance of airport is c
 ---
 
 ## Improvements
+
+As part of test driven development, I would aim to write out a list of the tests to be created before starting on the production code as this would make transitioning from the domain models to coding a smoother process.
+
+This project could be extended by creating terminals which planes could be moved between to allow more planes to take off at once. There could be a weather forcast and a journey time for each plane to ensure the safetey of passengers thoughout their flight.
 
 If I was to refactor my code:
     - I would add plane and weather classes ensuring single responsibility
