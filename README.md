@@ -136,5 +136,5 @@ As part of test driven development, I would aim to write out a list of the tests
 This project could be extended by creating terminals which planes could be moved between to allow more planes to take off at once. There could be a weather forcast and a journey time for each plane to ensure the safetey of passengers thoughout their flight.
 
 If I was to refactor my code:
-    * I would add plane and weather classes ensuring single responsibility
-    * Implement object oriented programming encapsulate my code to make it reusable
+* I would add plane and weather classes ensuring single responsibility
+* Implement object oriented programming encapsulate my code to make it reusable
